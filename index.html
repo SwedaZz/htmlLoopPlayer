@@ -8,10 +8,33 @@
 </head>
 <body style="border: 0; padding: 0; margin: 0;">
 
- <video src="resources\School.mp4" id="vid" autoplay loop muted style="width: 100vw; height: 100vh;"></video>   
- <!-- <script>
-    document.getElementById('vid').play();
-</script> -->
+ <video id="vid" autoplay muted style="width: 100vw; height: 100vh;"></video>   
+ 
+ <script>
+
+let video = document.getElementById("vid");
+
+const videoSources = ["resources/Welcome.mp4", "resources/ready.mp4", "resources/go.mp4"];
+
+let currentVideo = 0;
+
+video.src = videoSources[currentVideo];
+
+video.addEventListener("ended", function() {
+    currentVideo++;
+
+    if (currentVideo >= videoSources.length) {
+        currentVideo = 0;
+    }
+
+    video.src = videoSources[currentVideo];
+
+    video.play();
+});
+
+video.play();
+
+</script>
     
 </body>
 </html>
